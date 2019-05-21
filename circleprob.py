@@ -57,7 +57,7 @@ of the chord.""")
     if solve_method == 2:
         for _ in range(trials):
             point1 = pick_point_in_circle()
-            chord_endpoint = find_endpoint(point1)
+            chord_endpoint = find_endpoint(point1, 1)
             distance = 2 * calc_distance(point1, chord_endpoint)
             if distance >= 1:
                 larger += 1
@@ -70,7 +70,7 @@ of the chord.""")
     if solve_method == 3:
         for _ in range(trials):
             radius_point = pick_radius_point()
-            chord_endpoint = find_endpoint(radius_point)
+            chord_endpoint = find_endpoint(radius_point, 1)
             distance = 2 * calc_distance(radius_point, chord_endpoint)
             if distance >= 1:
                 larger += 1
@@ -123,7 +123,7 @@ def pick_radius_point():
     return radius_point
 
 
-def find_endpoint(midpoint):
+def find_endpoint(midpoint, direction):
     ''' This function determines an endpoint of a chord given its midpoint. The point is determined by moving some distance,
     t along the vector perpendicular to the radius. Points on this line are described by midpoint + T * vector. This will
     be on the edge of the circle when the distance from the origin to a given point on the line determined is equal to the radius.
@@ -134,7 +134,7 @@ def find_endpoint(midpoint):
     y = midpoint[1]
     perp_vector = np.array([-y, x])
     t = ((1-x**2-y**2)/(x**2+y**2))**(1.0/2)
-    endpoint = np.add(midpoint, t * perp_vector)
+    endpoint = np.add(midpoint, direction * t * perp_vector)
     return endpoint
 
 def calc_distance(point1,point2):
