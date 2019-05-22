@@ -22,6 +22,11 @@ for i in range(DIM):
         disk1 = plt.Circle((0, 0), 1, color='blue', fill=False)
         axs[i, j].add_artist(disk1)
 
+# Label plots with method
+axs[0, 0].set_title("Method 1 - Pick 2 Endpoints")
+axs[0, 1].set_title("Method 2 - Random point is center")
+axs[0, 2].set_title("Method 3 - Random radius point is center")
+
 # Initialize list of line endpoints and colors
 lines = []
 colorlist = []
@@ -51,6 +56,8 @@ longlc = mc.LineCollection(longlines, colors = BLUE, linewidths = 0.5)
 axs[1, 0].add_collection(longlc)
 shortlc = mc.LineCollection(shortlines, colors = RED, linewidths = 0.5)
 axs[2, 0].add_collection(shortlc)
+
+
 
 lines = []
 colorlist = []
@@ -116,4 +123,5 @@ shortlc = mc.LineCollection(shortlines, colors = RED, linewidths = 0.5)
 axs[2, 2].add_collection(shortlc)
 
 fig.tight_layout()
+fig.savefig("test.png")
 plt.show()
