@@ -123,5 +123,5 @@ shortlc = mc.LineCollection(shortlines, colors = RED, linewidths = 0.5)
 axs[2, 2].add_collection(shortlc)
 
 fig.tight_layout()
-fig.savefig("test.png")
+fig.savefig("static/test.png")
 plt.show()
